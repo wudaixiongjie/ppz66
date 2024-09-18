@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ex02.student.mapper.StudentMapper1">
+    <select id="selectStudentBySno" parameterType="String" resultType="com.ex02.student.po.Student">
+        SELECT * FROM stu WHERE sno=#{sno};
+    </select>
+
+    <select id="selectStudentBySname" parameterType="String" resultType="com.ex02.student.po.Student">
+        SELECT * FROM stu WHERE sname LIKE CONCAT('%',#{sname},'%');
+    </select>
+
+    <insert id="insertStudent" parameterType="com.ex02.student.po.Student">
+        INSERT INTO stu (sno, sname, ssex, snative, mno)
+        VALUES (#{sno}, #{sname}, #{ssex}, #{snative}, #{mno});
+    </insert>
+
+    <delete id="deleteStudent" parameterType="String">
+        DELETE FROM stu WHERE sno=#{sno};
+    </delete>
+
+    <update id="updateStudent" parameterType="com.ex02.student.po.Student">
+        UPDATE stu SET sname=#{sname}, ssex=#{ssex}, snative=#{snative}, mno=#{mno} WHERE sno=#{sno};
+    </update>
+</mapper>
